@@ -291,6 +291,12 @@ static h2o_iovec_t build_request(h2o_req_t *req, int keepalive, int is_websocket
         buf.base[offset++] = '\r';
         buf.base[offset++] = '\n';
     }
+    {
+        h2o_socket_t *sock = req->conn->callbacks->get_socket(req->conn);
+        if (sock != NULL && h2o_socket_ssl_is_early_data(sock))
+            APPEND_STRLIT("Early-Data: 1\r\n");
+    }
+
     APPEND_STRLIT("\r\n");
 
 #undef RESERVE

@@ -1351,10 +1351,8 @@ h2o_iovec_t h2o_socket_ssl_get_selected_protocol(h2o_socket_t *sock)
 
 int h2o_socket_ssl_is_early_data(h2o_socket_t *sock)
 {
-    assert(sock->ssl != NULL);
-
 #if H2O_USE_PICOTLS
-    if (sock->ssl->ptls != NULL && !ptls_handshake_is_complete(sock->ssl->ptls))
+    if (sock->ssl != NULL && sock->ssl->ptls != NULL && !ptls_handshake_is_complete(sock->ssl->ptls))
         return 1;
 #endif
     return 0;
