@@ -172,7 +172,7 @@ void h2o_config_init(h2o_globalconf_t *config)
     config->hosts = h2o_mem_alloc(sizeof(config->hosts[0]));
     config->hosts[0] = NULL;
     h2o_linklist_init_anchor(&config->configurators);
-    config->server_name = h2o_iovec_init(H2O_STRLIT("h2o/" H2O_VERSION));
+    //config->server_name = h2o_iovec_init(H2O_STRLIT("h2o/" H2O_VERSION));
     config->max_request_entity_size = H2O_DEFAULT_MAX_REQUEST_ENTITY_SIZE;
     config->max_delegations = H2O_DEFAULT_MAX_DELEGATIONS;
     config->handshake_timeout = H2O_DEFAULT_HANDSHAKE_TIMEOUT;
